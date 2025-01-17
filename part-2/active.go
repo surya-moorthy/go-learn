@@ -142,15 +142,36 @@ func main() {
 
 	// what if we know the length of the slice then, we use
 
-	a := make([]int , 0 , 5)
+	// a := make([]int , 0 , 5)
     
-	for i := 0 ; i <  5; i++ {
-		a = append(a , i)
-		fmt.Printf("iteration:%d len=%d cap=%d \n",i,len(a),cap(a))
-	}
+	// for i := 0 ; i <  5; i++ {
+	// 	a = append(a , i)
+	// 	fmt.Printf("iteration:%d len=%d cap=%d \n",i,len(a),cap(a))
+	// }
      
     // maps  ->  these contains key value pairs like object in js 
-    
+    // maps can be declared using var (without knowing initial values) ,literal and make (knowing initial value)    
+     /*
+	    we have problem when we declare it in var 
+	
+	    var s map[string]int 
+	    s["key"] = 1
+	   panic: assignment to entry in nil map
 
+		goroutine 1 [running]:
+		main.main()
+	*/
+
+	//so we use literal or make to initiailiza a map
+
+	m := make(map[string]int)
+	m["Area"] = 1
+	m["perimeter"] = 2
+	fmt.Println(m)
+	delete(m , "perimeter")
+	fmt.Println(m)
+	v , ok := m["Area"]
+	// the above syntax has a value and bool to check whether the value is present in the given key
+	fmt.Printf("%d key has value or not : %t",v,ok)
 }
 
